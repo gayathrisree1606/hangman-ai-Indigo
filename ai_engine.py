@@ -1,7 +1,3 @@
-"""
-AI Engine for Hangman Game Solver
-Uses frequency analysis, pattern matching, and position-weighted scoring
-"""
 
 import re
 from typing import List, Set, Dict
@@ -10,12 +6,7 @@ from collections import Counter
 
 class HangmanAI:
     def __init__(self, dictionary_path: str = "words.txt"):
-        """
-        Initialize the Hangman AI with a dictionary.
-
-        Args:
-            dictionary_path: Path to the word dictionary file.
-        """
+        
         self.full_dictionary = self._load_dictionary(dictionary_path)
         self.current_dictionary = self.full_dictionary.copy()
         self.guessed_letters: Set[str] = set()
@@ -24,7 +15,7 @@ class HangmanAI:
         self.common_letters = 'etaoinshrdlcumwfgypbvkjxqz'
 
     def _load_dictionary(self, path: str) -> List[str]:
-        """Load and clean dictionary from file."""
+        
         try:
             with open(path, 'r') as f:
                 words = [w.strip().lower() for w in f.readlines()]
@@ -35,7 +26,7 @@ class HangmanAI:
             return ['flight', 'airline', 'airport', 'boarding', 'ticket']
 
     def reset(self):
-        """Reset AI state for a new game."""
+       
         self.current_dictionary = self.full_dictionary.copy()
         self.guessed_letters.clear()
 
@@ -45,16 +36,7 @@ class HangmanAI:
         return f'^{regex}$'
 
     def _filter_dictionary(self, pattern: str, guessed_letters: Set[str]) -> List[str]:
-        """
-        Filter dictionary based on current pattern and guessed letters.
-
-        Args:
-            pattern: Current word state (e.g., '__ __ e __ a n')
-            guessed_letters: Set of already guessed letters
-
-        Returns:
-            List of matching words
-        """
+        
         regex_pattern = self._pattern_to_regex(pattern)
         regex = re.compile(regex_pattern)
         letters = pattern.split()
@@ -76,10 +58,7 @@ class HangmanAI:
         return filtered
 
     def _calculate_letter_frequencies(self, words: List[str], guessed_letters: Set[str]) -> Dict[str, float]:
-        """
-        Calculate frequency scores for each letter in remaining words.
-        Uses position-weighted scoring for better accuracy.
-        """
+        
         if not words:
             return {}
 
@@ -103,17 +82,7 @@ class HangmanAI:
         return scores
 
     def get_next_guess(self, current_word_state: str, guessed_letters: List[str], guesses_remaining: int) -> str:
-        """
-        Main method to get next letter guess.
-
-        Args:
-            current_word_state: Current state (e.g., '__ __ e __ a n')
-            guessed_letters: List of already guessed letters
-            guesses_remaining: Number of attempts remaining
-
-        Returns:
-            Next letter to guess
-        """
+       
         current_word_state = current_word_state.lower().strip()
         self.guessed_letters = set(guessed_letters)
 
@@ -155,23 +124,21 @@ class HangmanAI:
         return 'e'
 
 
-# -------------------------
-# 🚀 Quick Test Cases
-# -------------------------
+
 if __name__ == "__main__":
     ai = HangmanAI()
 
     print("=== Test 1: '__ __ __ __ __ __ ' ===")
     guess = ai.get_next_guess("__ __ __ __ __ __ ", [], 6)
-    print(f"👉 First guess: {guess}\n")
+    print(f"First guess: {guess}\n")
 
     print("=== Test 2: 'f __ i __ h t' ===")
     ai.reset()
     guess = ai.get_next_guess("f __ i __ h t", ['f', 'i', 'h', 't'], 4)
-    print(f"👉 Next guess: {guess}\n")
+    print(f"Next guess: {guess}\n")
 
     print("=== Test 3: 'a i r __ o r t' ===")
     ai.reset()
     guess = ai.get_next_guess("a i r __ o r t", ['a', 'i', 'r', 'o', 't'], 5)
-    print(f"👉 Next guess: {guess}\n")
+    print(f"Next guess: {guess}\n")
 

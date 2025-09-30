@@ -11,8 +11,7 @@ ai = HangmanAI("words.txt")
 # FastAPI app
 app = FastAPI(title="Hangman AI Solver")
 
-# Mount static folder (optional if you want CSS/JS files)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 # Input model
 class GuessRequest(BaseModel):
@@ -24,7 +23,7 @@ class GuessRequest(BaseModel):
 class GuessResponse(BaseModel):
     nextGuess: str
 
-# ----------------- API Endpoints -----------------
+
 
 @app.post("/guess", response_model=GuessResponse)
 def get_guess(request: GuessRequest):
@@ -44,7 +43,7 @@ def reset_ai():
 def health_check():
     return {"status": "OK"}
 
-# ----------------- HTML Page -----------------
+
 @app.get("/", response_class=HTMLResponse)
 def home():
     html_content = """
