@@ -306,12 +306,13 @@ Combine multiple strategies with weighted voting.
 
 ## Author
 
-**Name:** Gayathri Sree  
+**Name:** Gayathri Prabhath
 **Email:** gayathriprabhath1606@outlook.com  
 **GitHub:** https://github.com/gayathrisree1606  
 **Repository:** https://github.com/gayathrisree1606/hangman-ai-Indigo
 
 ---
+
 
 
 
