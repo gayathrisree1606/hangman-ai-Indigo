@@ -117,11 +117,6 @@ uvicorn api:app --reload
 
 Open browser: **http://localhost:8000**
 
-**Features:**
-- Input current word state
-- Enter previously guessed letters
-- Specify remaining attempts
-- Get AI's next optimal guess instantly
 
 ---
 
@@ -312,6 +307,7 @@ Combine multiple strategies with weighted voting.
 **Repository:** https://github.com/gayathrisree1606/hangman-ai-Indigo
 
 ---
+
 
 
 
