@@ -204,18 +204,6 @@ uvicorn api:app --reload
 python test.py
 ```
 
----
-
-## Performance Metrics
-
-| Metric | Value |
-|--------|-------|
-| Success Rate | 85-95% |
-| Avg. Incorrect Guesses | 2-3 per word |
-| Avg. Total Guesses | 7-9 per word |
-| Time Complexity | O(n×m) per guess |
-| Space Complexity | O(n×m) |
-| Dictionary Size | 100+ airline terms |
 
 ---
 
@@ -324,6 +312,7 @@ Combine multiple strategies with weighted voting.
 **Repository:** https://github.com/gayathrisree1606/hangman-ai-Indigo
 
 ---
+
 
 
 
